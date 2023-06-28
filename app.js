@@ -1,25 +1,25 @@
-const fs = require('fs');
+const fs = require("fs");
 
-function copyFile(sourcePath, destinationPath) {
-  fs.readFile(sourcePath, 'utf-8', (err, data) => {
+function copyFile(sourceFile, destinationFile) {
+  fs.readFile(sourceFile, "utf-8", (err, data) => {
     if (err) {
-      console.error('Error al leer el archivo de origen:', err);
+      console.error(`Error al leer el archivo de origen ${sourceFile}:`, err);
       return;
     }
 
-    fs.writeFile(destinationPath, data, 'utf-8', (err) => {
+    fs.writeFile(destinationFile, data, "utf-8", (err) => {
       if (err) {
-        console.error('Error al escribir en el archivo de destino:', err);
+        console.error(
+          `Error al escribir en el archivo de destino ${destinationFile}:`,err
+        );
         return;
       }
 
-      console.log('El archivo ha sido copiado exitosamente.');
+      console.log(
+        `El archivo ${sourceFile} ha sido copiado exitosamente en ${destinationFile}.`
+      );
     });
   });
 }
 
-// Uso de la función copyFile
-const sourceFile = 'origen.txt';
-const destinationFile = 'destino.txt';
-
-copyFile(sourceFile, destinationFile);
+copyFile("origen.txt", "destino.txt");
